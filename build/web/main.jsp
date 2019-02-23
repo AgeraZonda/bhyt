@@ -20,8 +20,6 @@
             <br><br>
             <input type="text" placeholder="  CMND" name="cmnd" id="cmnd" class="custom-size">
             <br><br>
-            <input type="text" placeholder="  Ngày Sinh" name="dob" id="dob" class="custom-size">
-            <br><br>
             <input type="text" placeholder="  Lương Cơ Bản" name="salary" id="salary" class="custom-size">
             <br><br>
             <a>Diện dược hỗ trợ</a>

@@ -193,7 +193,7 @@ public class UserServlet extends HttpServlet {
             case "update": {
                 String newcmnd = request.getParameter("cmnd");
                 String newfullname = request.getParameter("name");
-                String newngaysinh = request.getParameter("ngaysinh");
+                String newngaysinh = request.getParameter("dob");
                 String newdantoc = request.getParameter("dantoc");
                 String newtenngdamho = request.getParameter("ngdamho");
                 String newgioitinh = request.getParameter("gioitinh");
@@ -206,8 +206,16 @@ public class UserServlet extends HttpServlet {
                 user1 = (User) session.getAttribute("user");
                 System.out.println(user1.getUserID());
 //                user1.setUserID(num);
-                user1.setEmail(newemail);
-                user1.setUsername(newuname);
+                user1.setBhxh_id(newbhxh);
+                user1.setDantoc(newdantoc); 
+                user1.setDob(newngaysinh);
+                user1.setEmail(newcmnd);
+                user1.setGioitinh(newgioitinh);
+                user1.setHogiadinh_id(newhogiadinhid);
+                user1.setHotennguoidamho(newtenngdamho);
+                user1.setQuequan(newquequan);
+                user1.setUsername(newfullname);
+                                        
                 long id = user1.getUserID();
 
 //                userDao.updateUser(user1);

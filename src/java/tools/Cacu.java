@@ -11,12 +11,12 @@ import java.util.ArrayList;
  *
  * @author nguye
  */
-public class cacu {
-    public float caculate(float salary) // luong co ban
+public class Cacu {
+    public float caculate(float salary,int percent) // luong co ban
     {
-        return (float) (salary*4.5/100);
+        return (float) (salary*4.5/100)*(100-percent)/100;
     }
-    public float[] caculate(float salary,int numberOfMember) //ho gia dinh
+    public float[] caculateForFamily(float salary,int numberOfMember) //ho gia dinh
     {
        float[] list = new float[10] ;
        for(int i = 0; i < numberOfMember;i++)
