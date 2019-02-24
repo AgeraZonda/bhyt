@@ -35,7 +35,7 @@
                             <li><a href="admin.jsp"><b>ADMIN</b> </a></li>
                             <% } %>
                             
-                            <li><a href="home.jsp?userID=<%=user.getUserID()%>" style="text-transform: uppercase;"><b><%= user.getUsername() %></b></a></li>
+                            <li><a href="index.jsp?userID=<%=user.getUserID()%>" style="text-transform: uppercase;"><b>Trang Chủ</b></a></li>
                                             <li><a href="<%=ttcnUrl%>" style=" padding-left: 5px;padding-right: 20px;">Khai Báo Thông Tin</a></li>
                             <li>
                                 <form action="UserServlet" method="post">

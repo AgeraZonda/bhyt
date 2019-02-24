@@ -48,15 +48,15 @@ public class UserServlet extends HttpServlet {
 //                    user.setHoten(request.getParameter("hoten"));
 //                    user.setNgaysinh(Date.valueOf(request.getParameter("ngaysinh")));
 //                    user.setSdt(request.getParameter("sdt"));
-                String email = request.getParameter("email");
+                String cmnd = request.getParameter("cmnd");
                 Pattern regex = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
-                Matcher matcher = regex.matcher(email);
+                Matcher matcher = regex.matcher(cmnd);
                 String uname = request.getParameter("uname");
                 String password = request.getParameter("pass");
                 String cfpassword = request.getParameter("copass");
                 User getUser = new User();
-                if (email.equals("") || email == null) {
-                    request.setAttribute("error", "Email không được để null");
+                if (cmnd.equals("") || cmnd == null) {
+                    request.setAttribute("error", "cmnd không được để null");
                     request.setAttribute("uname", uname);
 
                     RequestDispatcher rq = request.getRequestDispatcher(url);
@@ -66,7 +66,7 @@ public class UserServlet extends HttpServlet {
 
                 if (uname.equals("") || uname == null) {
                     request.setAttribute("error", "UserName không được để null");
-                    request.setAttribute("email", email);
+                    request.setAttribute("cmnd", cmnd);
                     RequestDispatcher rq = request.getRequestDispatcher(url);
                     rq.forward(request, response);
                 }
@@ -74,7 +74,7 @@ public class UserServlet extends HttpServlet {
                 Matcher matcherUname = regexUname.matcher(uname);
                 if (password.equals("") || password == null) {
                     request.setAttribute("error", "Pass không được để null");
-                    request.setAttribute("email", email);
+                    request.setAttribute("cmnd", cmnd);
                     request.setAttribute("uname", uname);
                     RequestDispatcher rq = request.getRequestDispatcher(url);
                     rq.forward(request, response);
@@ -90,23 +90,23 @@ public class UserServlet extends HttpServlet {
 //                }
                 if (!cfpassword.equals(password)) {
                     request.setAttribute("error", "Confirm password is wrong");
-                    request.setAttribute("email", email);
+                    request.setAttribute("cmnd", cmnd);
                     request.setAttribute("uname", uname);
                     RequestDispatcher rq = request.getRequestDispatcher(url);
                     rq.forward(request, response);
                 }
 
-                if (!email.equals("") && email != null && !password.equals("") && password != null && !uname.equals("") && uname != null && cfpassword.equals(password)) {
+                if (!cmnd.equals("") && cmnd != null && !password.equals("") && password != null && !uname.equals("") && uname != null && cfpassword.equals(password)) {
                     String pass = MD5.encryption(request.getParameter("pass"));
-                    boolean checkemail = userDao.checkEmail(email);
-                    if (checkemail == true) {
-                        request.setAttribute("error", "Email đã tồn tại");
-                        request.setAttribute("email", email);
+                    boolean checkcmnd = userDao.checkcmnd(cmnd);
+                    if (checkcmnd == true) {
+                        request.setAttribute("error", "cmnd đã tồn tại");
+                        request.setAttribute("cmnd", cmnd);
                         request.setAttribute("uname", uname);
                         RequestDispatcher rq = request.getRequestDispatcher(url);
                         rq.forward(request, response);
                     } else {
-                        user.setEmail(email);
+                        user.setcmnd(cmnd);
                         user.setUsername(uname);
 
                         user.setPassword(pass);
@@ -119,7 +119,7 @@ public class UserServlet extends HttpServlet {
                     }
                 }
             case "login":
-                user = userDao.login(request.getParameter("login-email"), MD5.encryption(request.getParameter("login-pass")));
+                user = userDao.login(request.getParameter("login-cmnd"), MD5.encryption(request.getParameter("login-pass")));
 
 
                 
@@ -130,7 +130,7 @@ public class UserServlet extends HttpServlet {
 
                     response.sendRedirect(url);
                 } else {
-                    request.setAttribute("error", "Wrong email or password");
+                    request.setAttribute("error", "Wrong cmnd or password");
                     response.sendRedirect(url);
                 }
                 break;
@@ -141,7 +141,7 @@ public class UserServlet extends HttpServlet {
 //                    user.setUserID(userDao.sizeUser());
 //                    user.setHoten(request.getParameter("hoten"));
 //                    user.setNgaysinh(Date.valueOf(request.getParameter("ngaysinh")));
-//                    user.setEmail(request.getParameter("email"));
+//                    user.setcmnd(request.getParameter("cmnd"));
 //                    user.setSdt(request.getParameter("sdt"));
 //                    userDao.updateUser(user); 
 //                    session.setAttribute("user",user);
@@ -209,7 +209,7 @@ public class UserServlet extends HttpServlet {
                 user1.setBhxh_id(newbhxh);
                 user1.setDantoc(newdantoc); 
                 user1.setDob(newngaysinh);
-                user1.setEmail(newcmnd);
+                user1.setcmnd(newcmnd);
                 user1.setGioitinh(newgioitinh);
                 user1.setHogiadinh_id(newhogiadinhid);
                 user1.setHotennguoidamho(newtenngdamho);

@@ -34,7 +34,7 @@
 
             
             <p style="margin-right: 250px; margin-bottom: 8px;" >CMND</p>
-            <input type="text" value="<%=user.getEmail()%>" name="cmnd" id="cmnd" class="custom-size">
+            <input type="text" value="<%=user.getcmnd()%>" name="cmnd" id="cmnd" class="custom-size">
             <p style="margin-right: 220px; margin-bottom: 8px;" >Full Name</p>
             <span id="user-result"></span>
             <input type="text" value="<%=user.getUsername()%>" name="name" id="name" class="custom-size">

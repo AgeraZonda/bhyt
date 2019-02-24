@@ -15,7 +15,7 @@
     <body>
         <div class="login">
             <form action="UserServlet" method="POST" class="login-form">
-                <input type="text" name="login-email" id="login-email" placeholder="  CMND" class="custom-login">
+                <input type="text" name="login-cmnd" id="login-cmnd" placeholder="  CMND" class="custom-login">
                 <input type="password" name="login-pass" id="login-pass" placeholder="  Password" class="custom-login">
                 <input type="hidden" value="login" name="command">
                 <input type="submit" value="Login" class="btn-login">

@@ -22,9 +22,9 @@ import model.User;
  */
 public class UserDao {
 
-    public boolean checkEmail(String email) {
+   public boolean checkcmnd(String cmnd) {
         Connection con = JDBCConnection.getJDBCConnection();
-        String sql = "SELECT * FROM user WHERE email = '" + email + "'";
+        String sql = "SELECT * FROM user WHERE cmnd = '" + cmnd + "'";
         PreparedStatement ps;
         try {
             ps = con.prepareCall(sql);
@@ -44,11 +44,11 @@ public class UserDao {
         Connection con = JDBCConnection.getJDBCConnection();
         PreparedStatement ps = null;
         try {
-            String sql = "insert into user(user_name,user_password,email,admin) values(?,?,?,?)";
+            String sql = "insert into user(user_name,user_password,cmnd,admin) values(?,?,?,?)";
             ps = con.prepareStatement(sql);
             ps.setString(1, u.getUsername());
             ps.setString(2, u.getPassword());
-            ps.setString(3, u.getEmail());
+            ps.setString(3, u.getcmnd());
             ps.setLong(4, u.getAdmin());
             ps.executeUpdate();
             return true;
@@ -66,11 +66,19 @@ public class UserDao {
 //            long id = u.getUserID();
 //            String email = u.getEmail();
 //            String username = u.getUsername();
-            String sql = "update user set email=?, user_name=? where user_id=?;";
+            String sql = "update user set cmnd=?, user_name=?,dob=?,dantoc=?,hotennguoidamho=?,gioitinh=?,quequan=?,bhxh_id=?,hogiadinh_id=? where user_id=?;";
             ps = con.prepareStatement(sql);
-            ps.setString(1, u.getEmail());
+            ps.setString(1, u.getcmnd());
             ps.setString(2, u.getUsername());
-            ps.setLong(3, u.getUserID());
+            
+            ps.setString(3, u.getDob());
+            ps.setString(4, u.getDantoc());
+            ps.setString(5, u.getHotennguoidamho());
+            ps.setString(6, u.getGioitinh());
+            ps.setString(7, u.getQuequan());
+            ps.setString(8, u.getBhxh_id());
+            ps.setString(9, u.getHogiadinh_id());
+            ps.setLong(10, u.getUserID());
           
             ps.executeUpdate(); 
             return true;
@@ -80,6 +88,7 @@ public class UserDao {
         
         return false;
     }
+
     
     public boolean updatePass(long id, String pass){
         Connection con = JDBCConnection.getJDBCConnection();
@@ -99,9 +108,9 @@ public class UserDao {
         return false;
     }
 
-    public User login(String email, String password) {
+    public User login(String cmnd, String password) {
         Connection con = JDBCConnection.getJDBCConnection();
-        String sql = "SELECT * FROM user WHERE email='" + email + "' and user_password='" + password + "'";
+        String sql = "SELECT * FROM user WHERE cmnd='" + cmnd + "' and user_password='" + password + "'";
         PreparedStatement ps;
         try {
             ps = (PreparedStatement) con.prepareStatement(sql);
@@ -109,7 +118,7 @@ public class UserDao {
             if (rs.next()) {
                 User u = new User();
                 u.setUserID(rs.getLong("user_id"));
-                u.setEmail(rs.getString("email"));
+                u.setcmnd(rs.getString("cmnd"));
                 u.setUsername(rs.getString("user_name"));
                 u.setPassword(rs.getString("user_password"));
                 u.setAdmin(rs.getLong("admin"));
@@ -132,7 +141,7 @@ public class UserDao {
             if(rs.next()){
                 User u = new User();
                 u.setUserID(rs.getLong("user_id"));
-                u.setEmail(rs.getString("email"));
+                u.setcmnd(rs.getString("cmnd"));
                 u.setUsername(rs.getString("user_name"));
                 u.setPassword(rs.getString("user_password"));
                 u.setAdmin(rs.getLong("admin"));
@@ -156,7 +165,7 @@ public class UserDao {
         while(rs.next()){
             User u = new User();
             u.setUserID(rs.getLong("user_id"));
-            u.setEmail(rs.getString("email"));
+            u.setcmnd(rs.getString("cmnd"));
             u.setUsername(rs.getString("user_name"));
             u.setPassword(rs.getString("user_password"));
             u.setAdmin(rs.getLong("admin"));

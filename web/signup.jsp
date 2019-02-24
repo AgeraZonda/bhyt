@@ -18,7 +18,7 @@
         <script type="text/javascript">
             $(document).ready(function () {
                 var x_timer;
-                $("#email").keyup(function (e) {
+                $("#cmnd").keyup(function (e) {
                     clearTimeout(x_timer);
                     var user_name = $(this).val();
                     x_timer = setTimeout(function () {
@@ -28,7 +28,7 @@
 
                 function check_username_ajax(username) {
                     $("#user-result").html('<img src="img/ajaxloader.gif" />');
-                    $.post('CheckEmailServlet', {'username': username}, function (data) {
+                    $.post('CheckcmndServlet', {'username': username}, function (data) {
                         $("#user-result").html(data);
                     });
                 }
@@ -47,7 +47,7 @@
                     <span id = "noti" style="display: none; color: red;">Please fill the form fully</span>
                     <h5 style="color: red"><%= request.getAttribute("error") != null ? request.getAttribute("error") : " "%></h5>
                     <form method="POST" action="UserServlet">
-                        <input type="text" placeholder="  CMND" name="email" id="email" class="custom-size" onclick="checkFull()">
+                        <input type="text" placeholder="  CMND" name="cmnd" id="cmnd" class="custom-size" onclick="checkFull()">
                         <span id="user-result"></span>
                         <br><br>
                         <input type="text" placeholder="  FullName" name="uname" id="uname" class="custom-size">
