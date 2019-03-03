@@ -20,7 +20,19 @@
             <br><br>
             <input type="text" placeholder="  CMND" name="cmnd" id="cmnd" class="custom-size">
             <br><br>
+            
+          
+            <a>Đối tượng tính theo cách đặc biệt</a>
+            <select name="persontype" id = "persontype" >
+                <option value="0">Diện bình thường</option>
+                <option value="1">Sinh Viên</option>
+                <option value="2">Người lao động bị tạm giam</option>
+                <option value="3">Tính bảo hiểm y tế theo hộ gia đình</option>
+
+            </select>
             <input type="text" placeholder="  Lương Cơ Bản" name="salary" id="salary" class="custom-size">
+            <br><br>
+            <input type="text" placeholder="  Số Thành viên trong gia đình" name="membercount" id="membercount" class="custom-size">
             <br><br>
             <a>Diện dược hỗ trợ</a>
             <select name="percent" id = "percent" >
