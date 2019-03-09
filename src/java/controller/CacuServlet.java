@@ -9,6 +9,7 @@ import DAO.UserDao;
 import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Int;
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.Character.LINE_SEPARATOR;
 import java.sql.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -107,17 +108,26 @@ public class CacuServlet extends HttpServlet {
         {
             for(int i =0;i<membercount;i++)
             {
-                out.println("phi bhyt cua thanh vien thu :"+i+" la: "+ resultlist[i] +"VND");
+                response.setContentType("text/html");
+                out = response.getWriter();
+                out.println("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">");
+                out.println("<a href=\"index.jsp?userID=<%=user.getUserID()%>\" style=\"text-transform: uppercase;\"><b>Home</b></a>");
+                out.println( "<div><p>Phi bhyt cua thanh vien thu " + (i+1) +" la: " + resultlist[i] + " VND</p></div>");
             }
                         
         }
         else
         {
-            out.println("phi bhyt cua ban la :"+result+ "VND");
+                response.setContentType("text/html");
+                out = response.getWriter();
+                out.println("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">");
+                out.println("<a href=\"index.jsp?userID=<%=user.getUserID()%>\" style=\"text-transform: uppercase;\"><b>Home</b></a>");
+                out.println("<div><p>Phi bhyt cua cua ban la: " + result + " VND</p></div>");
         }
         
         
 
     }
+
 
 }

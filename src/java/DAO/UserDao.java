@@ -118,6 +118,13 @@ public class UserDao {
             if (rs.next()) {
                 User u = new User();
                 u.setUserID(rs.getLong("user_id"));
+                u.setBhxh_id(rs.getString("bhxh_id"));
+                u.setDantoc(rs.getString("dantoc"));
+                u.setDob(rs.getString("dob"));
+                u.setGioitinh(rs.getString("gioitinh"));
+                u.setHogiadinh_id(rs.getString("hogiadinh_id"));
+                u.setHotennguoidamho(rs.getString("hotennguoidamho"));
+                u.setQuequan(rs.getString("quequan"));                
                 u.setcmnd(rs.getString("cmnd"));
                 u.setUsername(rs.getString("user_name"));
                 u.setPassword(rs.getString("user_password"));

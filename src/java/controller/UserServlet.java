@@ -108,7 +108,6 @@ public class UserServlet extends HttpServlet {
                     } else {
                         user.setcmnd(cmnd);
                         user.setUsername(uname);
-
                         user.setPassword(pass);
                         user.setAdmin(2);
                         userDao.inseartUser(user);
