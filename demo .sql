@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1:3306
--- Thời gian đã tạo: Th2 24, 2019 lúc 03:22 AM
+-- Thời gian đã tạo: Th3 09, 2019 lúc 02:45 AM
 -- Phiên bản máy phục vụ: 5.7.23
 -- Phiên bản PHP: 7.2.10
 
@@ -35,15 +35,15 @@ CREATE TABLE IF NOT EXISTS `user` (
   `user_password` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
   `cmnd` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
   `admin` int(2) NOT NULL,
-  `dob` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `dantoc` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `hotennguoidamho` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `gioitinh` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `quequan` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `bhxh_id` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `hogiadinh_id` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `dob` text COLLATE utf8mb4_unicode_ci,
+  `dantoc` text COLLATE utf8mb4_unicode_ci,
+  `hotennguoidamho` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `gioitinh` text COLLATE utf8mb4_unicode_ci,
+  `quequan` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `bhxh_id` text COLLATE utf8mb4_unicode_ci,
+  `hogiadinh_id` text COLLATE utf8mb4_unicode_ci,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `user`
@@ -67,7 +67,9 @@ INSERT INTO `user` (`user_id`, `user_name`, `user_password`, `cmnd`, `admin`, `d
 (40, 'Nguyen Van A', '81dc9bdb52d04dc20036dbd8313ed055', '187713039', 2, '', '', '', '', '', '', '0'),
 (41, 'Nguyen Van B', 'e10adc3949ba59abbe56e057f20f883e', '187713037', 2, '', '', '', '', '', '', '0'),
 (42, 'Nguyen Thi A', '81dc9bdb52d04dc20036dbd8313ed055', '187713040', 2, '', '', '', '', '', '', '0'),
-(43, 'Nguyen Quoc Duy', '81dc9bdb52d04dc20036dbd8313ed055', '187713038', 2, '10/01/1998', 'Kinh', 'Dinh thi nhuan', 'Nam', 'Nghe An', '123124', '4234234');
+(43, 'Nguyen Quoc Duy', '81dc9bdb52d04dc20036dbd8313ed055', '187713038', 2, '10/01/1998', 'Kinh', 'Dinh thi nhuan', 'Nam', 'Nghe An', '123124', '4234234'),
+(44, 'nguyenquochai', '123456', '186742342', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(45, 'Nguyen Quoc A', '81dc9bdb52d04dc20036dbd8313ed055', '1245123', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
