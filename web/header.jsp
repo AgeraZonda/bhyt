@@ -36,7 +36,7 @@
                             <% } %>
                             
                             <li><a href="index.jsp?userID=<%=user.getUserID()%>" style="text-transform: uppercase;"><b>Home</b></a></li>
-                                            <li><a href="<%=ttcnUrl%>" style=" padding-left: 5px;padding-right: 20px;">Khai Báo Thông Tin</a></li>
+                                            
                             <li>
                                 <form action="UserServlet" method="post">
                                     <input type="hidden" value="logout" name="command">

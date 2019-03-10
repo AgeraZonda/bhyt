@@ -16,6 +16,7 @@
         <link href="css/ttcn.css" rel="stylesheet" type="text/css" media="all" />
     </head>
     <body>
+       
         <jsp:include page="header.jsp"></jsp:include>
         <%
             User user = new User();
