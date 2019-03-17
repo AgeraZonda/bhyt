@@ -11,7 +11,7 @@ package model;
  */
 public class User {
     private long userID;
-    private String cmnd, username, password,avata,avata_name;
+    private String cmnd, username,avata,avata_name;
     private String  dob="",dantoc="",hotennguoidamho="",gioitinh="",quequan="",bhxh_id="",hogiadinh_id="";
 
     public String getDob() {
@@ -94,7 +94,6 @@ public class User {
         this.userID = userID;
         this.cmnd = cmnd;
         this.username = username;
-        this.password = password;
         this.avata = avata;
         this.avata_name = avata_name;
         this.admin = admin;
@@ -106,7 +105,6 @@ public class User {
         this.userID = userID;
         this.cmnd = cmnd;
         this.username = username;
-        this.password = password;
         this.admin = admin;
     }
 
@@ -134,13 +132,9 @@ public class User {
         this.username = username;
     }
 
-    public String getPassword() {
-        return password;
-    }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+
+
 
     public long getAdmin() {
         return admin;

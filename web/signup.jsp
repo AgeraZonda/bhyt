@@ -48,7 +48,6 @@
                     <h5 style="color: red"><%= request.getAttribute("error") != null ? request.getAttribute("error") : " "%></h5>
                     <form method="POST" action="UserServlet">
                         <input type="text" placeholder="  CMND" name="cmnd" id="cmnd" class="custom-size" onclick="checkFull()">
-                        <span id="user-result"></span>
                         <br><br>
                         <input type="text" placeholder="  FullName" name="uname" id="uname" class="custom-size">
                         <br><br>

@@ -34,25 +34,45 @@
 <!--                        <input type="hidden" value="<%= user.getUserID()%>" name="userID" id="userID">-->
 
             
-            <p style="margin-right: 250px; margin-bottom: 8px;" >CMND</p>
-            <input type="text" value="<%=user.getcmnd()%>" name="cmnd" id="cmnd" class="custom-size">
-            <p style="margin-right: 220px; margin-bottom: 8px;" >Full Name</p>
+            <p style="margin-right: 250px; margin-bottom: 8px;" >CMND<span style="color: red">*</span></p>
+            <input type="text" value="<%=user.getcmnd()%>" name="cmnd" id="cmnd" class="custom-size" disabled>
+            
+            <p style="margin-right: 220px; margin-bottom: 8px;" >Full Name<span style="color: red">*</span></p>
             <span id="user-result"></span>
-            <input type="text" value="<%=user.getUsername()%>" name="name" id="name" class="custom-size">
-            <p style="margin-right: 250px; margin-bottom: 8px;" >Ngày Sinh</p>
+            <input type="text" value="<%=user.getUsername()%>" name="name" id="name" class="custom-size" >
+            <h5 style="color: red"><%= request.getAttribute("error2") != null ? request.getAttribute("error2") : " "%></h5>
+
+            
+            <p style="margin-right: 250px; margin-bottom: 8px;" >Ngày Sinh (yyyy-mm-dd)<span style="color: red">*</span></p>
             <input type="text" value="<%=user.getDob()%>" name="dob" id="dob" class="custom-size">
-            <p style="margin-right: 250px; margin-bottom: 8px;" >Dân Tộc</p>
+            <h5 style="color: red"><%= request.getAttribute("error3") != null ? request.getAttribute("error3") : " "%></h5>
+            
+            <p style="margin-right: 250px; margin-bottom: 8px;" >Dân Tộc<span style="color: red">*</span></p>
             <input type="text" value="<%=user.getDantoc()%>" name="dantoc" id="dantoc" class="custom-size">
-            <p style="margin-right: 250px; margin-bottom: 8px;" >Họ tên người dám hộ(đối với trẻ em dưới 6 tuổi)</p>
+            <h5 style="color: red"><%= request.getAttribute("error4") != null ? request.getAttribute("error4") : " "%></h5>
+
+            <p style="margin-right: 250px; margin-bottom: 8px;" >Họ tên người dám hộ(đối với trẻ em dưới 6 tuổi)<span style="color: red">*</span></p>
             <input type="text" value="<%=user.getHotennguoidamho()%>" name="ngdamho" id="ngdamho" class="custom-size">
-            <p style="margin-right: 250px; margin-bottom: 8px;" >Giới Tính</p>
+            <h5 style="color: red"><%= request.getAttribute("error5") != null ? request.getAttribute("error5") : " "%></h5>
+            
+            <p style="margin-right: 250px; margin-bottom: 8px;" >Giới Tính<span style="color: red">*</span></p>
             <input type="text" value="<%=user.getGioitinh()%>" name="gioitinh" id="gioitinh" class="custom-size">
-            <p style="margin-right: 250px; margin-bottom: 8px;" >Quê Quán</p>
+            <h5 style="color: red"><%= request.getAttribute("error6") != null ? request.getAttribute("error6") : " "%></h5>
+
+            
+            <p style="margin-right: 250px; margin-bottom: 8px;" >Quê Quán<span style="color: red">*</span></p>
             <input type="text" value="<%=user.getQuequan()%>" name="quequan" id="quequan" class="custom-size">
+            <h5 style="color: red"><%= request.getAttribute("error7") != null ? request.getAttribute("error7") : " "%></h5>
+            
             <p style="margin-right: 250px; margin-bottom: 8px;" >Mã Số BHXH(đã cấp)</p>
             <input type="text" value="<%=user.getBhxh_id()%>" name="bhxh" id="bhxh" class="custom-size">
+            <h5 style="color: red"><%= request.getAttribute("error8") != null ? request.getAttribute("error8") : " "%></h5>
+            
             <p style="margin-right: 250px; margin-bottom: 8px;" >Mã Số Hộ Gia Đình(đã cấp)</p>
             <input type="text" value="<%=user.getHogiadinh_id()%>" name="hogiadinh" id="hogiadinh" class="custom-size">
+            <h5 style="color: red"><%= request.getAttribute("error9") != null ? request.getAttribute("error9") : " "%></h5>
+
+            
             
 
             
@@ -68,7 +88,7 @@
             <input type="submit" value="Update" class="custom-inp">
         </form>
             <br>
-            <p><a href="changePass.jsp">Đổi mật khẩu</a></p>
+
     </center>
 </body>
 </html>

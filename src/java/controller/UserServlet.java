@@ -5,10 +5,13 @@
  */
 package controller;
 
+import DAO.AccountDao;
 import DAO.UserDao;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.servlet.RequestDispatcher;
@@ -17,6 +20,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model.Account;
 import model.User;
 import tools.MD5;
 
@@ -27,8 +31,10 @@ import tools.MD5;
 public class UserServlet extends HttpServlet {
 
     UserDao userDao = new UserDao();
+    AccountDao accountDao = new AccountDao();
 
-    
+    PrintWriter out;
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -42,6 +48,7 @@ public class UserServlet extends HttpServlet {
         String url = "index.jsp";
         String name = "";
         User user = new User();
+        Account account = new Account();
         HttpSession session = request.getSession();
         switch (command) {
             case "insert":
@@ -62,7 +69,6 @@ public class UserServlet extends HttpServlet {
                     RequestDispatcher rq = request.getRequestDispatcher(url);
                     rq.forward(request, response);
                 }
-                
 
                 if (uname.equals("") || uname == null) {
                     request.setAttribute("error", "UserName không được để null");
@@ -98,7 +104,7 @@ public class UserServlet extends HttpServlet {
 
                 if (!cmnd.equals("") && cmnd != null && !password.equals("") && password != null && !uname.equals("") && uname != null && cfpassword.equals(password)) {
                     String pass = MD5.encryption(request.getParameter("pass"));
-                    boolean checkcmnd = userDao.checkcmnd(cmnd);
+                    boolean checkcmnd = accountDao.checkcmnd(cmnd);
                     if (checkcmnd == true) {
                         request.setAttribute("error", "cmnd đã tồn tại");
                         request.setAttribute("cmnd", cmnd);
@@ -108,9 +114,12 @@ public class UserServlet extends HttpServlet {
                     } else {
                         user.setcmnd(cmnd);
                         user.setUsername(uname);
-                        user.setPassword(pass);
                         user.setAdmin(2);
+                        account.setCmnd(cmnd);
+                        account.setPassword(pass);
+
                         userDao.inseartUser(user);
+                        accountDao.inseartUser(account);
                         session.setAttribute("user", user);
                         RequestDispatcher rq = request.getRequestDispatcher(url);
                         rq.forward(request, response);
@@ -118,14 +127,15 @@ public class UserServlet extends HttpServlet {
                     }
                 }
             case "login":
-                user = userDao.login(request.getParameter("login-cmnd"), MD5.encryption(request.getParameter("login-pass")));
+                User user3 = new User();
+                user3 = accountDao.login(request.getParameter("login-cmnd"), MD5.encryption(request.getParameter("login-pass")));
 
-
-                
-         
                 if (user != null) {
-                    
-                    session.setAttribute("user", user);
+
+                    session.setAttribute("user", user3);
+                    ArrayList<User> list = new ArrayList<User>();
+
+                    session.setAttribute("listmember", list);
 
                     response.sendRedirect(url);
                 } else {
@@ -135,6 +145,7 @@ public class UserServlet extends HttpServlet {
                 break;
             case "logout":
                 session.setAttribute("user", null);
+                session.setAttribute("listmember", null);
                 response.sendRedirect("index.jsp");
 //                case "update":
 //                    user.setUserID(userDao.sizeUser());
@@ -146,51 +157,8 @@ public class UserServlet extends HttpServlet {
 //                    session.setAttribute("user",user);
 //                    url = "/index.jsp";
                 break;
-            case "updatePass": {
-                String url1 = "changePass.jsp";
-                User user2 = new User();
-                user2 = (User) session.getAttribute("user");
-                String password1 = user2.getPassword();
-                long id1 = user2.getUserID();
-                System.out.println(user2.getUserID());
-                String oldPass = request.getParameter("oldPass");
-                String newPass = request.getParameter("newPass");
-                String cfnewPass = request.getParameter("cfnewPass");
-                String pass1 = MD5.encryption(oldPass);
-                if (oldPass.equals("") || oldPass == null) {
-                    request.setAttribute("error", "OldPass không được để null");
-                   
-                    RequestDispatcher rq = request.getRequestDispatcher(url1);
-                    rq.forward(request, response);
-                }
-                if (!password1.equals(pass1)) {
-                    request.setAttribute("error", "Sai mật khẩu!");
-                    RequestDispatcher rq = request.getRequestDispatcher(url1);
-                    rq.forward(request, response);
-                }
-                if (newPass.equals("") || newPass == null) {
-                    request.setAttribute("error", "NewPass không được để null");
-                   
-                    RequestDispatcher rq = request.getRequestDispatcher(url1);
-                    rq.forward(request, response);
-                }
-                if (!cfnewPass.equals(newPass)) {
-                    request.setAttribute("error", "Xác nhận mật khẩu sai!");
-                    RequestDispatcher rq = request.getRequestDispatcher(url1);
-                    rq.forward(request, response);
-                }
 
-                if (password1.equals(pass1) && cfnewPass.equals(newPass)) {
-                    String passnew = MD5.encryption(newPass);
-                    userDao.updatePass(id1, passnew);
-                    RequestDispatcher rq = request.getRequestDispatcher(url);
-                    rq.forward(request, response);
-                    break;
-                }
-
-            }
             case "update": {
-                String newcmnd = request.getParameter("cmnd");
                 String newfullname = request.getParameter("name");
                 String newngaysinh = request.getParameter("dob");
                 String newdantoc = request.getParameter("dantoc");
@@ -202,19 +170,93 @@ public class UserServlet extends HttpServlet {
 //                String id = request.getParameter("userID");
 //                long num = Long.parseLong(id);
                 User user1 = new User();
+                boolean error = false;
+                Account account1 = new Account();
                 user1 = (User) session.getAttribute("user");
                 System.out.println(user1.getUserID());
 //                user1.setUserID(num);
                 user1.setBhxh_id(newbhxh);
-                user1.setDantoc(newdantoc); 
+                user1.setDantoc(newdantoc);
                 user1.setDob(newngaysinh);
-                user1.setcmnd(newcmnd);
                 user1.setGioitinh(newgioitinh);
                 user1.setHogiadinh_id(newhogiadinhid);
                 user1.setHotennguoidamho(newtenngdamho);
                 user1.setQuequan(newquequan);
                 user1.setUsername(newfullname);
-                                        
+                Pattern regexdob = Pattern.compile("^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)$"
+                        + "|^(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))$"
+                        + "|^(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))$"
+                        + "|^(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))$");
+                Matcher matcherdob = regexdob.matcher(newngaysinh);
+
+                //Regex fullname
+                Pattern regexNewfullname = Pattern.compile("^[a-zA-Z\\s]{1,50}$");
+                Matcher matcherNewfullname = regexNewfullname.matcher(newfullname);
+
+                //Regex dantoc
+                Pattern regexNewdantoc = Pattern.compile("^[a-zA-Z\\s]{1,10}$");
+                Matcher matcherNewdantoc = regexNewfullname.matcher(newdantoc);
+
+                //Regex tennguoigiamho
+                Pattern regexNewtenngdamho = Pattern.compile("^[a-zA-Z\\s]{1,50}$");
+                Matcher matchNewtenngdamho = regexNewtenngdamho.matcher(newtenngdamho);
+
+                //Regex gioitinh: Nam or Nu
+                Pattern regexNewgioitinh = Pattern.compile("^[a-zA-Z]{2,3}$");
+                Matcher matchNewgioitinh = regexNewgioitinh.matcher(newgioitinh);
+
+                //regex quequan
+                Pattern regexNewquequan = Pattern.compile("^[a-zA-Z\\s]{1,100}$");
+                Matcher matchNewquequan = regexNewquequan.matcher(newquequan);
+
+                //regex ma bhxh: CH1234567894561 (mã BHXH gồm 2 phần: phần 1: CH,DN,...(gồm 2 chữ cái), phần 2: 51224....(13 chữ số))
+                Pattern regexNewbhxh = Pattern.compile("^[CH|DN|NN|HT|CT|XB|TN|QN|CA|CY|MS|CC|HD|TE|DT|CN|HS|SV]{2}[1-5]{1}[0-9]{12}$");
+                Matcher matchNewbhxh = regexNewbhxh.matcher(newbhxh);
+
+                //regex ma hogiadinh
+                Pattern regexNewmahogiadinhid = Pattern.compile("^[0-9]{10}$");
+                Matcher matchNewmahogiadinhid = regexNewmahogiadinhid.matcher(newhogiadinhid);
+
+                if (matcherNewfullname.matches() == false) {
+                    request.setAttribute("error2", "Họ tên không được để trống hoặc có ký tự đặc biệt");
+                    error = true;
+                }
+                if (matcherdob.matches() == false) {
+                    request.setAttribute("error3", "sai định dạng ngày tháng");
+                    error = true;
+                }
+
+                if (matcherNewdantoc.matches() == false) {
+                    request.setAttribute("error4", "Khong được để trống dân tộc hoặc thừa ký tự đặc biệt");
+                    error = true;
+                }
+                if (matchNewtenngdamho.matches() == false) {
+                    request.setAttribute("error5", "Tên người dám hộ không được để trống hoặc có ký tự đặc biệt");
+                    error = true;
+                }
+                if (matchNewgioitinh.matches() == false) {
+                    request.setAttribute("error6", "Giới tính chỉ có thể là Nam hoặc Nu");
+                    error = true;
+                }
+                if (matchNewquequan.matches() == false) {
+                    request.setAttribute("error7", "Quên quán không được để trống hoặc có ký đặc biệt");
+                    error = true;
+                }
+                if (matchNewbhxh.matches() == false && !newbhxh.equals("")) {
+                    request.setAttribute("error8", "Không đúng định dạng mã BHXH");
+                    error = true;
+                }
+                if (matchNewmahogiadinhid.matches() == false && !newhogiadinhid.equals("")) {
+                    request.setAttribute("error9", "Không đúng định dạng mã hộ gia đình");
+                    error = true;
+                }
+
+                if (error) {
+                    RequestDispatcher rq = request.getRequestDispatcher("ttcn.jsp");
+                    rq.forward(request, response);
+                    return;
+                }
+
                 long id = user1.getUserID();
 
 //                userDao.updateUser(user1);
@@ -230,7 +272,7 @@ public class UserServlet extends HttpServlet {
                 }
                 break;
             }
-            
+
         }
     }
 

@@ -13,7 +13,7 @@
     </head>
     <body>
         <div style="background-color: #fb5e33; height: 50px; text-align: center; width: 100% ">
-            <p style="padding-top: 15px; padding-bottom: 10px;">Được thiết kế bởi Nhóm 5</p>
+
         </div>
     </body>
 </html>

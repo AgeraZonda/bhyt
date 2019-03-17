@@ -5,6 +5,7 @@
 --%>
 
 
+<%@page import="java.util.ArrayList"%>
 <%@page import="model.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -24,7 +25,9 @@
         %>        
         <%--<jsp:include page="login.jsp"></jsp:include>--%>
         <jsp:include page="signup.jsp"></jsp:include>
-        <% } %>
+        <% }
+            ArrayList<User> listMember = new ArrayList<User>();
+        %>
         <br><br><br><br>
         <% if (user != null) {%>  
 
