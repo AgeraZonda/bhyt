@@ -12,6 +12,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
         <script type="text/javascript">
 
             function changeFunc() {
@@ -60,7 +62,9 @@
 
 
         %>
-        <jsp:include page="header.jsp"></jsp:include>
+        <div class="header-page--02">
+            <jsp:include page="header.jsp"></jsp:include>
+        </div>
         <center>
 
             <form action="SearchServlet" id = "Searchfamily"  method="POST" class="form-search" id="search">
