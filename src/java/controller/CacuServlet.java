@@ -53,19 +53,18 @@ public class CacuServlet extends HttpServlet {
 
         ArrayList<User> list = new ArrayList<User>();
 
-        User user1 = new User();
+        User user1 ;
         user1 = (User) session.getAttribute("user");
+
         list = (ArrayList<User>) session.getAttribute("listmember");
 
-        user1 = (User) request.getAttribute("user");
         membercount = list.size();
-
         if (request.getParameter("homeid") != null) {
             homeid = request.getParameter("homeid");
         }
-        for (int i = 0; i < membercount; i++) {
+        for (int i = 0; i < list.size(); i++) {
             Family fa = new Family();
-            fa.setCmnd(user1.getcmnd());
+            fa.setCmnd(list.get(i).getcmnd());
             fa.setHogiadinh_id(homeid);
             fd.insertFamily(fa);
         }

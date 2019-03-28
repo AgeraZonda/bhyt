@@ -112,7 +112,7 @@ body {
     margin: 0 auto;
     font-size: 0; }
   .information-content .form-01 {
-    margin-top: 15px;
+    padding: 15px 0;
     text-align: center; }
   .information-content .button-01 {
     margin-top: 20px; }
