@@ -10,7 +10,7 @@ package model;
  * @author nguye
  */
 public class Family {
-    String hogiadinh_id,thanhphan;
+    String hogiadinh_id;
     String cmnd;
 
     public String getHogiadinh_id() {
@@ -21,13 +21,7 @@ public class Family {
         this.hogiadinh_id = hogiadinh_id;
     }
 
-    public String getThanhphan() {
-        return thanhphan;
-    }
-
-    public void setThanhphan(String thanhphan) {
-        this.thanhphan = thanhphan;
-    }
+   
 
     public String getCmnd() {
         return cmnd;

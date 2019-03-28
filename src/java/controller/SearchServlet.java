@@ -57,7 +57,6 @@ public class SearchServlet extends HttpServlet {
             {
             user1 = ud.getUserFromAccount(content);
             if (user1.getUsername() != null || user1.getUsername().equals("") ) {
-                System.out.println(user1.getUsername());
                 list.add(user1);
                 session.setAttribute("user", user2);
                 session.setAttribute("listmember", list);

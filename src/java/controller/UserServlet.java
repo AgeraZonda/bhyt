@@ -130,6 +130,7 @@ public class UserServlet extends HttpServlet {
                 User user3 = new User();
                 user3 = accountDao.login(request.getParameter("login-cmnd"), MD5.encryption(request.getParameter("login-pass")));
 
+
                 if (user != null) {
 
                     session.setAttribute("user", user3);
