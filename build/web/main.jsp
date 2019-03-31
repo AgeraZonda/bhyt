@@ -12,28 +12,24 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
         <script type="text/javascript">
 
             function changeFunc() {
                 var persontype = document.getElementById("persontype");
-                var selectedValue = persontype.options[persontype.selectedIndex].value;
-                var x = document.getElementById("myDIV");
+                var selectedValue = persontype.options[persontype.selectedIndex].value
                 if (selectedValue === "3")
                 {
                     document.getElementById("homeid").style.display = 'initial';
                     document.getElementById("bossname").style.display = 'initial';
-                    document.getElementById("Searchfamily").style.display = 'initial';
                     document.getElementById("membercount").style.display = 'initial';
-                    document.getElementById("searchtable").style.display = 'initial';
-                    x.style.display = "block";
+
                 } else
                 {
-                    document.getElementById("bossname").style.display = 'none';
                     document.getElementById("homeid").style.display = 'none';
-                    document.getElementById("Searchfamily").style.display = 'none';
+                    document.getElementById("bossname").style.display = 'none';
                     document.getElementById("membercount").style.display = 'none';
-                    document.getElementById("searchtable").style.display = 'none';
-                    x.style.display = "none";
                 }
                 if (selectedValue === "1")
                 {
@@ -41,7 +37,6 @@
                     document.getElementById("percent").style.display = 'none';
                     document.getElementById("percenttag").style.display = 'none';
                 } else
-
                 {
                     document.getElementById("salary").style.display = 'initial';
                     document.getElementById("percent").style.display = 'initial';
@@ -67,7 +62,9 @@
 
 
         %>
-        <jsp:include page="header.jsp"></jsp:include>
+        <div class="header-page--02">
+            <jsp:include page="header.jsp"></jsp:include>
+            </div>
         <center>
 
 
@@ -94,18 +91,15 @@
                 <br><br>
                 <input type="text" placeholder="  Lương Cơ Bản" name="salary" id="salary" class="custom-size">
                 <h5 style="color: red"><%= request.getAttribute("error2") != null ? request.getAttribute("error2") : " "%></h5>
+            <br>
             <input type="text" style = "display:none"placeholder="  Họ và tên chủ hộ" name="bossname" id="bossname" class="custom-size">
             <br><br>
             <input type="text" style = "display:none"placeholder="  Số sổ hộ khẩu" name="homeid" id="homeid" class="custom-size">
             <br><br>
             <input type="text" style = "display:none"placeholder="  Số thành viên trong gia đình" name="membercount" id="membercount" class="custom-size">
-            
-            </table>
-            </div>
 
 
-
-
+     
             <br><br>
             <a id="percenttag">Diện dược hỗ trợ</a>
             <select name="percent" id = "percent" >
@@ -117,8 +111,8 @@
             <br><br>
             <input type="submit" value="Tính" class="custom-inp">
         </form>
-            <div id="myDIV">
-                <a>Nhập cmnd các thành viên trong gia đình (Để lưu thông tin các thành viên trong gia đình)</a> <br>
+
+            <a>Nhập cmnd các thành viên trong gia đình (Để lưu thông tin các thành viên trong gia đình)</a> <br>
             <form action="SearchServlet" id = "Searchfamily"  method="POST" class="form-search" >
                 <input type="text" name="content_search" placeholder="  Write a cmnd..." class="add-comment">
                 <input type="hidden" value="<%=user.getcmnd()%>" name="userID">
@@ -145,8 +139,9 @@
                     }
 
                 %>
-    </center>
+                <table>
+                </center>
 
-</body>
+                </body>
 
-</html>
+                </html>

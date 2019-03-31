@@ -6,12 +6,12 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/header.css" rel="stylesheet" type="text/css" media="all" />
     </head>
     <body>
         <div class="header">			
             <div class="header-logo">
-                <center><h1>Tính phí bảo hiểm y tế</h1></center>
+                <h1>Tính phí bảo hiểm y tế</h1>
             </div>
 
             <% 
@@ -22,20 +22,18 @@
             {
                 user = (User) session.getAttribute("user");
                 String ttcnUrl = "ttcn.jsp?userID=" + user.getUserID();
-            %>   
-            <center>
+            %>
                 <div class="header-content">
-
 
                     <div class="header-menu">
                         <ul style="    list-style-type: none;">
                             <%
                                 if(user.getAdmin() == 1 ){
                             %>
-                            <li><a href="admin.jsp"><b>ADMIN</b> </a></li>
+                            <li><a href="admin.jsp">ADMIN </a></li>
                             <% } %>
                             
-                            <li><a href="index.jsp?userID=<%=user.getUserID()%>" style="text-transform: uppercase;"><b>Home</b></a></li>
+                            <li><a href="index.jsp?userID=<%=user.getUserID()%>" style="text-transform: uppercase;">Home</a></li>
                                             
                             <li>
                                 <form action="UserServlet" method="post">
@@ -45,9 +43,7 @@
                             </li>	
                         </ul>
                     </div>
-                </div>      
-            </center>
-                
+                </div>   
             <% } else { %>      
             <center><jsp:include page="login.jsp"></jsp:include></center>
             

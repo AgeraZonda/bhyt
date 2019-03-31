@@ -18,8 +18,16 @@
                 <input type="text" name="login-cmnd" id="login-cmnd" placeholder="  CMND" class="custom-login">
                 <input type="password" name="login-pass" id="login-pass" placeholder="  Password" class="custom-login">
                 <input type="hidden" value="login" name="command">
-                <input type="submit" value="Login" class="btn-login">
+                <input type="submit" value="Login" id="submit-btn" class="btn-login button-01">
             </form>
+            <p>If you dont have account <a id="open-modal-signup" href="javascript:void(0)">Register Now</a></p>
+
+            <script>
+                $('#open-modal-signup').on('click', function(event) {
+                    event.preventDefault();
+                    $('.signup-area').addClass('show');
+                });
+            </script>
         </div>
     </body>
 </html>

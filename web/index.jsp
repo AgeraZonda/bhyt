@@ -13,18 +13,26 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <title>JSP Page</title>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
         <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+        <script src="js/jquery-3.2.1.min.js"></script>
     </head>
     <body>    
-        <jsp:include page="header.jsp"></jsp:include>
+            <!-- <jsp:include page="header.jsp"></jsp:include> -->
         <%
             User user = null;
             if (session.getAttribute("user") != null) {
                 user = (User) session.getAttribute("user");
+        %>
+            <div class="header-page--02">
+                <jsp:include page="header.jsp"></jsp:include>
+            </div>
+        <%
             } else {
         %>        
-        <%--<jsp:include page="login.jsp"></jsp:include>--%>
-        <jsp:include page="signup.jsp"></jsp:include>
+            <%--<jsp:include page="login.jsp"></jsp:include>--%>
+            <jsp:include page="header.jsp"></jsp:include>
+            <jsp:include page="signup.jsp"></jsp:include>
         <% }
             ArrayList<User> listMember = new ArrayList<User>();
         %>
@@ -35,11 +43,16 @@
         <br><br> 
 
         <div class="cacufee">
-            <center>
-                <li><a href="ttcn.jsp?userID=<%=user.getUserID()%>" style=" padding-left: 5px;padding-right: 20px;">Khai Báo Thông Tin</a></li>
-                <li><a href="main.jsp?userID=<%=user.getUserID()%>" style="text-transform: uppercase;"><b>Tính bhyt</b></a></li>
-            </center>
-
+            <div class="cacufee__content">
+            <li>
+                <a href="ttcn.jsp?userID=<%=user.getUserID()%>">Khai Báo Thông Tin</a>
+            </li>
+            <li>
+                <a href="main.jsp?userID=<%=user.getUserID()%>">
+                    Tính bhyt
+                </a>
+            </li>
+            </div>
         </div>
         <% }%>
 

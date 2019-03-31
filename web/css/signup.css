@@ -1,0 +1,58 @@
+.signup-area {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(51, 51, 51, 0.5);
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out; }
+  .signup-area.show {
+    opacity: 1;
+    visibility: visible; }
+  .signup-area .signup-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: #fff;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 500px;
+    border-radius: 6px;
+    -webkit-box-shadow: 0 0 10px rgba(51, 51, 51, 0.9);
+    box-shadow: 0 0 10px rgba(51, 51, 51, 0.9);
+    text-align: center; }
+    .signup-area .signup-form:before {
+      content: '';
+      display: inline-block;
+      height: 100%;
+      width: 0;
+      vertical-align: middle;
+      vertical-align: middle; }
+    .signup-area .signup-form center {
+      display: inline-block;
+      margin: 0 auto;
+      vertical-align: middle; }
+  .signup-area .close-button {
+    position: absolute;
+    top: 15px;
+    right: 15px; }
+  .signup-area .signup__title {
+    margin-bottom: 30px; }
+  .signup-area form {
+    display: block;
+    width: 300px;
+    margin: 0 auto; }
+    .signup-area form input[type="text"],
+    .signup-area form input[type="password"] {
+      display: block;
+      width: 100%;
+      margin-bottom: 20px;
+      padding: 5px 15px; }
+    .signup-area form input[type="submit"] {
+      margin-top: 10px; }
