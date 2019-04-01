@@ -122,3 +122,64 @@ body {
 
 .text--red {
   color: red; }
+
+.calculate__page {
+  padding: 0 30px; }
+  .calculate__page .grid {
+    display: block;
+    font-size: 0;
+    margin: 50px 0; }
+    .calculate__page .grid .grid-item {
+      display: inline-block;
+      width: 50%;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      vertical-align: top;
+      font-size: 16px; }
+      .calculate__page .grid .grid-item .grid-item-content {
+        width: 500px; }
+      .calculate__page .grid .grid-item .title {
+        text-transform: uppercase;
+        margin-bottom: 20px; }
+      .calculate__page .grid .grid-item:first-child {
+        border-right: 1px solid #333; }
+        .calculate__page .grid .grid-item:first-child .grid-item-content {
+          float: right; }
+      .calculate__page .grid .grid-item:last-child {
+        padding-left: 46px; }
+        .calculate__page .grid .grid-item:last-child .grid-item-content {
+          float: left; }
+        .calculate__page .grid .grid-item:last-child .search-input {
+          height: 30px;
+          width: 200px;
+          -webkit-box-sizing: border-box;
+          box-sizing: border-box; }
+        .calculate__page .grid .grid-item:last-child #Searchfamily {
+          margin-bottom: 50px; }
+        .calculate__page .grid .grid-item:last-child table {
+          table-layout: fixed;
+          width: 100%;
+          border: 1px solid #ccc; }
+          .calculate__page .grid .grid-item:last-child table thead td {
+            padding: 5px 10px; }
+          .calculate__page .grid .grid-item:last-child table tbody td {
+            border-top: 1px solid #eee;
+            padding: 7px 10px; }
+  .calculate__page .form-cacu .input-item {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 15px; }
+    .calculate__page .form-cacu .input-item label, .calculate__page .form-cacu .input-item span {
+      font-size: 15px;
+      width: 250px;
+      display: inline-block; }
+    .calculate__page .form-cacu .input-item input, .calculate__page .form-cacu .input-item select {
+      display: inline-block;
+      width: 200px;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      height: 30px; }
+    .calculate__page .form-cacu .input-item input {
+      padding: 5px; }
+  .calculate__page .form-cacu .custom-inp {
+    margin-top: 30px; }
