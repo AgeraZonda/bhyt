@@ -172,3 +172,105 @@ body {
 .text--red {
   color: red;
 }
+
+.calculate__page {
+  padding: 0 30px;
+
+  .grid {
+    display: block;
+    font-size: 0;
+    margin: 50px 0;
+  
+    .grid-item {
+      display: inline-block;
+      width: 50%;
+      box-sizing: border-box;
+      vertical-align: top;
+      font-size: 16px;
+
+      .grid-item-content {
+        width: 500px;
+      }
+      
+      .title {
+        text-transform: uppercase;
+        margin-bottom: 20px;
+      }
+
+      &:first-child {
+        border-right: 1px solid #333;
+        
+        .grid-item-content {
+          float: right;
+        }
+      }
+
+      &:last-child {
+        padding-left: 46px;
+        
+        .grid-item-content {
+          float: left;
+        }
+
+        .search-input {
+          height: 30px;
+          width: 200px;
+          box-sizing: border-box;
+        }
+
+        #Searchfamily {
+          margin-bottom: 50px;
+        }
+
+        table {
+          table-layout: fixed;
+          width: 100%;
+          border: 1px solid #ccc;
+
+          thead {
+            td  {
+              padding: 5px 10px;
+            } 
+          }
+          
+          tbody {
+            
+            td {
+              border-top: 1px solid #eee;
+              padding: 7px 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .form-cacu {
+    .input-item {
+      font-size: 16px;
+      color: #333;
+      margin-bottom:  15px;
+
+      label, span {
+        font-size: 15px;
+        width: 250px;
+        display: inline-block;
+      }
+
+      input, select {
+        display: inline-block;
+        width: 200px;
+        box-sizing: border-box;
+        height: 30px;
+      }
+
+      input {
+        padding: 5px;
+      }
+    }
+
+    .custom-inp {
+      margin-top: 30px;
+    }
+  }
+}
