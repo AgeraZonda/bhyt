@@ -53,7 +53,7 @@ public class CacuServlet extends HttpServlet {
 
         ArrayList<User> list = new ArrayList<User>();
 
-        User user1 ;
+        User user1;
         user1 = (User) session.getAttribute("user");
 
         list = (ArrayList<User>) session.getAttribute("listmember");
@@ -69,38 +69,25 @@ public class CacuServlet extends HttpServlet {
             fd.insertFamily(fa);
         }
 
-        
         //regex salary
         String salaryString = request.getParameter("salary");
-        Pattern regexsalary = Pattern.compile("^[0-9]{6,9}$"); 
+        Pattern regexsalary = Pattern.compile("^[0-9]{6,9}$");
         Matcher matcherSalary = regexsalary.matcher(salaryString);
-        
-       
-        
+
         if (matcherSalary.matches() == false) {
             request.setAttribute("error2", "Lương cơ bản không được để trống, phải là số và lơn hơn 1000000");
             error = true;
         } else {
             salary = Integer.parseInt(salaryString);
         }
-        
-      
-        
+
 //        if (matchMembercount.matches() == false) {
 //            request.setAttribute("error3", "Số thành viên trong gia đình trống");
 //            error = true;
 //        } else {
 //            membercount = Integer.parseInt(request.getParameter("membercount"));
 //        }
-        
-        
         // render error              
-        if(error) {
-            RequestDispatcher rq = request.getRequestDispatcher("main.jsp");
-            rq.forward(request, response);
-            return;
-        }
-
         if (request.getParameter("bhytID") != null) {
             bhytID = request.getParameter("bhytID");
         }
@@ -118,8 +105,6 @@ public class CacuServlet extends HttpServlet {
         } else {
             persontype = 0;
         }
-
-
 
         int percentreduce = 0;
         if (percent == 1) {
@@ -148,7 +133,16 @@ public class CacuServlet extends HttpServlet {
             result = ca.caculate((float) (salary * 0.5), percentreduce);
         }
         if (persontype == 3) {
+            if (list == null || list.isEmpty()) {
+                request.setAttribute("error2", "Bạn phải nhập cmnd các thành viên trong gia đình");
+                error = true;
+            }
             resultlist = ca.caculateForFamily(salary, membercount);
+        }
+        if (error) {
+            RequestDispatcher rq = request.getRequestDispatcher("main.jsp");
+            rq.forward(request, response);
+            return;
         }
 
         String someMessage = "Error !";
@@ -159,18 +153,19 @@ public class CacuServlet extends HttpServlet {
 
         response.setContentType("text/html");
         if (persontype == 3) {
-            for (int i = 0; i < membercount; i++) {
-
-                out.println("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">");
-
-                out.println("<div><p>Phi bhyt cua thanh vien thu " + (i + 1) + " la: " + resultlist[i] + " VND</p></div>");
-            }
+            HttpSession session1 = request.getSession();
+            session1.setAttribute("resultlist", resultlist);
+            session1.setAttribute("listmember", list);
+            session1.setAttribute("type", 1);
+            session.setAttribute("user", user1);
+            response.sendRedirect("result.jsp");
 
         } else {
-
-            out.println("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">");
-            out.println("<a href=\"index.jsp?userID=<%=user.getUserID()%>\" style=\"text-transform: uppercase;\"><b>Home</b></a>");
-            out.println("<div><p>Phi bhyt cua cua ban la: " + result + " VND</p></div>");
+            HttpSession session1 = request.getSession();
+            session1.setAttribute("result", result);
+            session1.setAttribute("type", 2);
+            session.setAttribute("user", user1);
+            response.sendRedirect("result.jsp");
         }
 
     }

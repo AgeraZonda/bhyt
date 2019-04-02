@@ -139,7 +139,6 @@
                         <p class="subtitle">Nhập cmnd các thành viên trong gia đình</p> <br>
                         <form action="SearchServlet" id = "Searchfamily"  method="POST" class="form-search" >
                             <input type="text" name="content_search" placeholder="  Write a cmnd..." class="search-input">
-                            <h5 class="text--red"><%= request.getAttribute("error2") != null ? request.getAttribute("errorequal") : " "%></h5>
                             <input type="hidden" value="<%=user.getcmnd()%>" name="userID">
                             <input type="submit" value="Tìm kiếm" class="custom-inp button-01">
                         </form>
