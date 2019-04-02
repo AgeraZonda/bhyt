@@ -19,15 +19,23 @@
     <body>
        
        <div class="header-page--02">
-        <jsp:include page="header.jsp"></jsp:include>
+        
        </div>
         <%
             User user = new User();
+         if (session.getAttribute("user") == null) {
+
+        %>
+    <center><h1 style="padding-top: 200px" class="title">You need to login</h1></center>
+        
+
+        <%                } else {
 
             user = (User) session.getAttribute("user");
 
             
         %>
+        <jsp:include page="header.jsp"></jsp:include>
     <div class="information-content">
         <h1 class="information__title">Information</h1> <br>
         <h2 class="information__sebtitle"><%= user.getUsername()%></h2>
@@ -108,4 +116,7 @@
         </form>
     </div>
 </body>
+    <%
+        }
+    %>
 </html>

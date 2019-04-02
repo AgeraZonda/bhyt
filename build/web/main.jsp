@@ -43,9 +43,14 @@
         <%
             User user = new User();
             ArrayList<User> familyMember = new ArrayList<User>();
-            if (session.getAttribute("user") != null) {
-                user = (User) session.getAttribute("user");
-            }
+            if (session.getAttribute("user") == null) {
+
+        %>
+    <center><h1 style="padding-top: 200px" class="title">You need to login</h1></center>
+        
+
+        <%                } else {
+            user = (User) session.getAttribute("user");
 
             if (session.getAttribute("listmember") != null) {
 
@@ -56,41 +61,41 @@
         %>
         <div class="header-page--02">
             <jsp:include page="header.jsp"></jsp:include>
-        </div>
-        
-        <div class="calculate__page">
-            <div class="grid">
-                <div class="grid-item">
-                    <div class="grid-item-content">
-                        <h3 class="title">Tính phí bảo hiểm y tế</h3>
-                        <form action="CacuServlet" id="Caculatorfamily"  method="POST" class="form-cacu">
-                            <div class="input-item">
-                                <span>Đối tượng tính theo cách đặc biệt</span>
-                                <select name="persontype" id = "persontype" onchange="changeFunc();" >
-                                    <option value="0">Diện bình thường</option>
-                                    <option value="1">Sinh Viên</option>
-                                    <option value="2">Người lao động bị tạm giam</option>
-                                    <option value="3">Tính bảo hiểm y tế theo hộ gia đình</option>
-                                </select>
-                            </div>    
-                            
-                            <div class="input-item">
-                                <label for="bhytID">Mã Bảo Hiểm Y Tế</label>
-                                <input type="text" placeholder="Mã Bảo Hiểm Y Tế" name="bhytID" id="bhytID" class="custom-size" >
-                            </div>
-                            
-                            <div class="input-item">
-                                <label for="name">Họ Và Tên</label>
-                                <input type="text" placeholder="Họ Và Tên" name="name" id="name" class="custom-size">
-                            </div>
+            </div>
 
-                            <div class="input-item">
-                                <label for="salary">Lương cơ bản</label>
-                                <input type="text" placeholder="  Lương Cơ Bản" name="salary" id="salary" class="custom-size">
-                            </div>
+            <div class="calculate__page">
+                <div class="grid">
+                    <div class="grid-item">
+                        <div class="grid-item-content">
+                            <h3 class="title">Tính phí bảo hiểm y tế</h3>
+                            <form action="CacuServlet" id="Caculatorfamily"  method="POST" class="form-cacu">
+                                <div class="input-item">
+                                    <span>Đối tượng tính theo cách đặc biệt</span>
+                                    <select name="persontype" id = "persontype" onchange="changeFunc();" >
+                                        <option value="0">Diện bình thường</option>
+                                        <option value="1">Sinh Viên</option>
+                                        <option value="2">Người lao động bị tạm giam</option>
+                                        <option value="3">Tính bảo hiểm y tế theo hộ gia đình</option>
+                                    </select>
+                                </div>    
 
-                            <h5 style="color: red"><%= request.getAttribute("error2") != null ? request.getAttribute("error2") : " "%></h5>
-                    
+                                <div class="input-item">
+                                    <label for="bhytID">Mã Bảo Hiểm Y Tế</label>
+                                    <input type="text" placeholder="Mã Bảo Hiểm Y Tế" name="bhytID" id="bhytID" class="custom-size" >
+                                </div>
+
+                                <div class="input-item">
+                                    <label for="name">Họ Và Tên</label>
+                                    <input type="text" placeholder="Họ Và Tên" name="name" id="name" class="custom-size">
+                                </div>
+
+                                <div class="input-item">
+                                    <label for="salary">Lương cơ bản</label>
+                                    <input type="text" placeholder="  Lương Cơ Bản" name="salary" id="salary" class="custom-size">
+                                </div>
+
+                                <h5 style="color: red"><%= request.getAttribute("error2") != null ? request.getAttribute("error2") : " "%></h5>
+
                             <div id="showIfSelectedEqual3" style="display:none">
                                 <div class="input-item">
                                     <label for="bossname">Họ và tên chủ hộ</label>
@@ -101,14 +106,14 @@
                                     <label for="homeid">Số sổ hộ khẩu</label>
                                     <input type="text" placeholder="Số sổ hộ khẩu" name="homeid" id="homeid" class="custom-size">
                                 </div>
-                                
+
                                 <div class="input-item">
                                     <label for="membercount">Số thành viên trong gia đình</label>
                                     <input type="text" placeholder="" name="membercount" id="membercount" class="custom-size">
                                 </div>
                             </div>
-                        
-                        
+
+
                             <div id="showIfSelectdEqual1" style="display: none">
                                 <div class="input-item">
                                     <span id="percenttag">Diện dược hỗ trợ</span>
@@ -134,10 +139,11 @@
                         <p class="subtitle">Nhập cmnd các thành viên trong gia đình</p> <br>
                         <form action="SearchServlet" id = "Searchfamily"  method="POST" class="form-search" >
                             <input type="text" name="content_search" placeholder="  Write a cmnd..." class="search-input">
+                            <h5 class="text--red"><%= request.getAttribute("error2") != null ? request.getAttribute("errorequal") : " "%></h5>
                             <input type="hidden" value="<%=user.getcmnd()%>" name="userID">
                             <input type="submit" value="Tìm kiếm" class="custom-inp button-01">
                         </form>
-                        
+
                         <table>
                             <thead>
                                 <tr>
@@ -147,13 +153,13 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            <% for (int i = 0; i < familyMember.size(); i++) { %>
+                                <% for (int i = 0; i < familyMember.size(); i++) {%>
                                 <tr>
                                     <td><%=familyMember.get(i).getcmnd()%></td>
                                     <td><%=familyMember.get(i).getUsername()%></td>
                                     <td><%=familyMember.get(i).getDob()%></td>
                                 </tr>
-                            <%  }   %>
+                                <%  }   %>
                             </tbody>
                         </table>
                     </div>    
@@ -161,4 +167,7 @@
             </div>
         </div>
     </body>
+    <%
+        }
+    %>
 </html>

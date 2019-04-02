@@ -6,7 +6,6 @@
  */
 package controller;
 
-
 import DAO.UserDao;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -36,11 +35,10 @@ public class SearchServlet extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         String content = request.getParameter("content_search");
         String pID = request.getParameter("userID");
-        if(content.equals("")){
+        if (content.equals("")) {
 
             response.sendRedirect("main.jsp");
-        }
-        else {
+        } else {
             HttpSession session = request.getSession();
             ArrayList<User> list = new ArrayList<User>();
             list = (ArrayList<User>) session.getAttribute("listmember");
@@ -48,24 +46,39 @@ public class SearchServlet extends HttpServlet {
             user2 = (User) session.getAttribute("user");
             UserDao ud = new UserDao();
             User user1 = null;
-            if(ud.getUserFromAccount(content) == null)
-            {
+            if (ud.getUserFromAccount(content) == null) {
                 session.setAttribute("listmember", list);
                 session.setAttribute("user", user2);
-                response.sendRedirect("main.jsp");
-            }else
-            {
-            user1 = ud.getUserFromAccount(content);
-            if (user1.getUsername() != null || user1.getUsername().equals("") ) {
-                list.add(user1);
-                session.setAttribute("user", user2);
-                session.setAttribute("listmember", list);
                 response.sendRedirect("main.jsp");
             } else {
-                System.out.println("Error");
-            }
+                if (checkCMND(content, list)==false) {
+                    session.setAttribute("user", user2);
+                    session.setAttribute("listmember", list);
+                    response.sendRedirect("main.jsp");
+
+                } else {
+                    user1 = ud.getUserFromAccount(content);
+                    if (user1.getUsername() != null || user1.getUsername().equals("")) {
+                        list.add(user1);
+                        session.setAttribute("user", user2);
+                        session.setAttribute("listmember", list);
+                        response.sendRedirect("main.jsp");
+                    } else {
+                        System.out.println("Error");
+                    }
+                }
+
             }
         }
 
+    }
+
+    private boolean checkCMND(String content, ArrayList<User> list) {
+        for (int i = 0; i < list.size(); i++) {
+            if (content.equals(list.get(i).getcmnd())) {
+                return false;
+            }
+        }
+        return true;
     }
 }
