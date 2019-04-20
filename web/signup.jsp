@@ -36,7 +36,7 @@
             });
         </script>
         <br><br><br><br>
-        <div class="signup-area">
+        <div class="signup-area show">
             <div class="signup-infor">
             </div>
             <div class="signup-form">
@@ -44,7 +44,7 @@
                     <h1 class="signup__title">Sign Up!</h1>
                     <span id = "noti" style="display: none; color: red;">Please fill the form fully</span>
                     <h5 style="color: red"><%= request.getAttribute("error") != null ? request.getAttribute("error") : " "%></h5>
-                    <div class="close-button"></div>
+                    <!-- <div class="close-button"></div> -->
                     <form method="POST" action="UserServlet">
                         <input type="text" placeholder="  CMND" name="cmnd" id="cmnd" class="custom-size" onclick="checkFull()">
                         <input type="text" placeholder="  FullName" name="uname" id="uname" class="custom-size">
@@ -53,15 +53,16 @@
                         <input type="hidden" value="insert" name="command">
                         <input type="submit" value="Register" class="custom-inp button-01">
                     </form>
+                     <p style="margin-top: 15px;"><a id="open-modal-signup" href="index.jsp">Login</a></p>
                 </center>
             </div>
-
+<!-- 
             <script>
                 $('.signup-area .close-button').on('click', function(event) {
                     event.preventDefault();
                     $('.signup-area').removeClass('show');
                 });
-            </script>
+            </script> -->
         </div>
 
     </body>

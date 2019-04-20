@@ -55,6 +55,7 @@ public class UserServlet extends HttpServlet {
 //                    user.setHoten(request.getParameter("hoten"));
 //                    user.setNgaysinh(Date.valueOf(request.getParameter("ngaysinh")));
 //                    user.setSdt(request.getParameter("sdt"));
+                String url_return_error = "signup.jsp";
                 String cmnd = request.getParameter("cmnd");
                 Pattern regex = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
                 Matcher matcher = regex.matcher(cmnd);
@@ -66,14 +67,14 @@ public class UserServlet extends HttpServlet {
                     request.setAttribute("error", "cmnd không được để null");
                     request.setAttribute("uname", uname);
 
-                    RequestDispatcher rq = request.getRequestDispatcher(url);
+                    RequestDispatcher rq = request.getRequestDispatcher(url_return_error);
                     rq.forward(request, response);
                 }
 
                 if (uname.equals("") || uname == null) {
                     request.setAttribute("error", "UserName không được để null");
                     request.setAttribute("cmnd", cmnd);
-                    RequestDispatcher rq = request.getRequestDispatcher(url);
+                    RequestDispatcher rq = request.getRequestDispatcher(url_return_error);
                     rq.forward(request, response);
                 }
                 Pattern regexUname = Pattern.compile("[$&+,:;=?@#|'<>.-^*()%!]");
@@ -82,7 +83,7 @@ public class UserServlet extends HttpServlet {
                     request.setAttribute("error", "Pass không được để null");
                     request.setAttribute("cmnd", cmnd);
                     request.setAttribute("uname", uname);
-                    RequestDispatcher rq = request.getRequestDispatcher(url);
+                    RequestDispatcher rq = request.getRequestDispatcher(url_return_error);
                     rq.forward(request, response);
                 }
 //                Pattern regexPass = Pattern.compile("[$&+,:;=?@#|'<>.-^*()%!]");
@@ -98,7 +99,7 @@ public class UserServlet extends HttpServlet {
                     request.setAttribute("error", "Confirm password is wrong");
                     request.setAttribute("cmnd", cmnd);
                     request.setAttribute("uname", uname);
-                    RequestDispatcher rq = request.getRequestDispatcher(url);
+                    RequestDispatcher rq = request.getRequestDispatcher(url_return_error);
                     rq.forward(request, response);
                 }
 
@@ -109,7 +110,7 @@ public class UserServlet extends HttpServlet {
                         request.setAttribute("error", "cmnd đã tồn tại");
                         request.setAttribute("cmnd", cmnd);
                         request.setAttribute("uname", uname);
-                        RequestDispatcher rq = request.getRequestDispatcher(url);
+                        RequestDispatcher rq = request.getRequestDispatcher(url_return_error);
                         rq.forward(request, response);
                     } else {
                         user.setcmnd(cmnd);
