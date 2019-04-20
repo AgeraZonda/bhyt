@@ -15,6 +15,8 @@
         <title>JSP Page</title>
         <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
         <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/common.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/signup.css" rel="stylesheet" type="text/css" media="all" />
         <script src="js/jquery-3.2.1.min.js"></script>
     </head>
     <body>    
@@ -32,7 +34,6 @@
         %>        
             <%--<jsp:include page="login.jsp"></jsp:include>--%>
             <jsp:include page="header.jsp"></jsp:include>
-            <jsp:include page="signup.jsp"></jsp:include>
         <% }
             ArrayList<User> listMember = new ArrayList<User>();
         %>

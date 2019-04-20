@@ -20,14 +20,7 @@
                 <input type="hidden" value="login" name="command">
                 <input type="submit" value="Login" id="submit-btn" class="btn-login button-01">
             </form>
-            <p>If you dont have account <a id="open-modal-signup" href="javascript:void(0)">Register Now</a></p>
-
-            <script>
-                $('#open-modal-signup').on('click', function(event) {
-                    event.preventDefault();
-                    $('.signup-area').addClass('show');
-                });
-            </script>
+            <p>If you dont have account <a id="open-modal-signup" href="signup.jsp">Register Now</a></p>
         </div>
     </body>
 </html>
