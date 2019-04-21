@@ -102,10 +102,7 @@
                                     <input type="text"  name="homeid" id="homeid" class="custom-size">
                                 </div>
                                 
-                                <div class="input-item">
-                                    <label for="membercount">Số thành viên trong gia đình</label>
-                                    <input type="text" placeholder="" name="membercount" id="membercount" class="custom-size">
-                                </div>
+                                
                             </div>
                         
                         
@@ -130,7 +127,8 @@
 
                 <div class="grid-item">
                     <div class="grid-item-content">
-                        <h3 class="title">Lưu thông tin các thành viên trong gia đình</h3>
+                        <h3 class="title">Lưu thông tin các thành viên trong gia đình*</h3>
+                        <p class="title" style>(Bắt buộc trong trường hợp tính phí theo hộ gia đình)</p>
                         <p class="subtitle">Nhập cmnd các thành viên trong gia đình</p> <br>
                         <form action="SearchServlet" id = "Searchfamily"  method="POST" class="form-search" >
                             <input type="text" name="content_search" placeholder="  Nhập vào CMND..." class="search-input">
