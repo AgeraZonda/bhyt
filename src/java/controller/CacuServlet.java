@@ -151,26 +151,21 @@ public class CacuServlet extends HttpServlet {
             resultlist = ca.caculateForFamily(salary, membercount);
         }
 
-        String someMessage = "Error !";
-        PrintWriter out = response.getWriter();
-        out = response.getWriter();
-        response.setContentType("text/html");
-        out.println("<a href=\"index.jsp?userID=<%=user.getUserID()%>\" style=\"text-transform: uppercase;\"><b>Home</b></a>");
+
 
         response.setContentType("text/html");
         if (persontype == 3) {
-            for (int i = 0; i < membercount; i++) {
-
-                out.println("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">");
-
-                out.println("<div><p>Phi bhyt cua thanh vien thu " + (i + 1) + " la: " + resultlist[i] + " VND</p></div>");
-            }
+                    session.setAttribute("user", user1);
+                    session.setAttribute("resultlist", resultlist);
+                    RequestDispatcher rq = request.getRequestDispatcher("detail.jsp");
+                    rq.forward(request, response);
 
         } else {
+                    session.setAttribute("user", user1);
+                    session.setAttribute("result", result);
+                    RequestDispatcher rq = request.getRequestDispatcher("detail.jsp");
+                    rq.forward(request, response);
 
-            out.println("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">");
-            out.println("<a href=\"index.jsp?userID=<%=user.getUserID()%>\" style=\"text-transform: uppercase;\"><b>Home</b></a>");
-            out.println("<div><p>Phi bhyt cua cua ban la: " + result + " VND</p></div>");
         }
 
     }
