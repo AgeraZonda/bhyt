@@ -16,11 +16,11 @@
         <div class="login">
             <form action="UserServlet" method="POST" class="login-form">
                 <input type="text" name="login-cmnd" id="login-cmnd" placeholder="  CMND" class="custom-login">
-                <input type="password" name="login-pass" id="login-pass" placeholder="  Password" class="custom-login">
+                <input type="password" name="login-pass" id="login-pass" placeholder="  Mật khẩu" class="custom-login">
                 <input type="hidden" value="login" name="command">
-                <input type="submit" value="Login" id="submit-btn" class="btn-login button-01">
+                <input type="submit" value="Đăng Nhập" id="submit-btn" class="btn-login button-01">
             </form>
-            <p>If you dont have account <a id="open-modal-signup" href="signup.jsp">Register Now</a></p>
+            <p>Không có tải khoản ? <a id="open-modal-signup" href="signup.jsp">Đăng Ký</a></p>
         </div>
     </body>
 </html>

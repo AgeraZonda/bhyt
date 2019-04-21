@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Đăng Ký</title>
         <link href="css/common.css" rel="stylesheet" type="text/css" media="all" />
         <link href="css/signup.css" rel="stylesheet" type="text/css" media="all" />
     </head>
@@ -41,19 +41,19 @@
             </div>
             <div class="signup-form">
                 <center>
-                    <h1 class="signup__title">Sign Up!</h1>
+                    <h1 class="signup__title">Đăng Ký!</h1>
                     <span id = "noti" style="display: none; color: red;">Please fill the form fully</span>
                     <h5 style="color: red"><%= request.getAttribute("error") != null ? request.getAttribute("error") : " "%></h5>
                     <!-- <div class="close-button"></div> -->
                     <form method="POST" action="UserServlet">
                         <input type="text" placeholder="  CMND" name="cmnd" id="cmnd" class="custom-size" onclick="checkFull()">
-                        <input type="text" placeholder="  FullName" name="uname" id="uname" class="custom-size">
-                        <input type="password" placeholder="  Password" name="pass" id="pass" class="custom-size">
-                        <input type="password" placeholder="  Confirm Password" name="copass" id="pass" class="custom-size">
+                        <input type="text" placeholder="  Họ và tên" name="uname" id="uname" class="custom-size">
+                        <input type="password" placeholder="  Mật khẩu" name="pass" id="pass" class="custom-size">
+                        <input type="password" placeholder="  Nhập lại mật khẩu" name="copass" id="pass" class="custom-size">
                         <input type="hidden" value="insert" name="command">
-                        <input type="submit" value="Register" class="custom-inp button-01">
+                        <input type="submit" value="Đăng Ký" style="width: 100px;"class="custom-inp button-01">
                     </form>
-                     <p style="margin-top: 15px;"><a id="open-modal-signup" href="index.jsp">Login</a></p>
+                     <p style="margin-top: 15px;"><a id="open-modal-signup" href="index.jsp">Đăng Nhập</a></p>
                 </center>
             </div>
 <!-- 

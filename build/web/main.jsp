@@ -11,7 +11,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Tính Phí</title>
         <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
         <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
         <script type="text/javascript">
@@ -76,17 +76,17 @@
                             
                             <div class="input-item">
                                 <label for="bhytID">Mã Bảo Hiểm Y Tế</label>
-                                <input type="text" placeholder="Mã Bảo Hiểm Y Tế" name="bhytID" id="bhytID" class="custom-size" >
+                                <input type="text"  name="bhytID" id="bhytID" class="custom-size" >
                             </div>
                             
                             <div class="input-item">
                                 <label for="name">Họ Và Tên</label>
-                                <input type="text" placeholder="Họ Và Tên" name="name" id="name" class="custom-size">
+                                <input type="text"  name="name" id="name" class="custom-size">
                             </div>
 
                             <div class="input-item">
                                 <label for="salary">Lương cơ bản</label>
-                                <input type="text" placeholder="  Lương Cơ Bản" name="salary" id="salary" class="custom-size">
+                                <input type="text"  name="salary" id="salary" class="custom-size">
                             </div>
 
                             <h5 style="color: red"><%= request.getAttribute("error2") != null ? request.getAttribute("error2") : " "%></h5>
@@ -94,12 +94,12 @@
                             <div id="showIfSelectedEqual3" style="display:none">
                                 <div class="input-item">
                                     <label for="bossname">Họ và tên chủ hộ</label>
-                                    <input type="text" placeholder="Họ và tên chủ hộ" name="bossname" id="bossname" class="custom-size">
+                                    <input type="text"  name="bossname" id="bossname" class="custom-size">
                                 </div>
 
                                 <div class="input-item">
                                     <label for="homeid">Số sổ hộ khẩu</label>
-                                    <input type="text" placeholder="Số sổ hộ khẩu" name="homeid" id="homeid" class="custom-size">
+                                    <input type="text"  name="homeid" id="homeid" class="custom-size">
                                 </div>
                                 
                                 <div class="input-item">
@@ -133,7 +133,7 @@
                         <h3 class="title">Lưu thông tin các thành viên trong gia đình</h3>
                         <p class="subtitle">Nhập cmnd các thành viên trong gia đình</p> <br>
                         <form action="SearchServlet" id = "Searchfamily"  method="POST" class="form-search" >
-                            <input type="text" name="content_search" placeholder="  Write a cmnd..." class="search-input">
+                            <input type="text" name="content_search" placeholder="  Nhập vào CMND..." class="search-input">
                             <input type="hidden" value="<%=user.getcmnd()%>" name="userID">
                             <input type="submit" value="Tìm kiếm" class="custom-inp button-01">
                         </form>

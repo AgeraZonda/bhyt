@@ -26,6 +26,6 @@
             if (session.getAttribute("user") != null) {
                 user = (User) session.getAttribute("user");
         %>
-           
+        <h1></h1>
     </body>
 </html>

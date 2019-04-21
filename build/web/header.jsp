@@ -33,12 +33,12 @@
                             <li><a href="admin.jsp">ADMIN </a></li>
                             <% } %>
                             
-                            <li><a href="index.jsp?userID=<%=user.getUserID()%>" style="text-transform: uppercase;">Home</a></li>
+                            <li><a href="index.jsp?userID=<%=user.getUserID()%>" style="text-transform: uppercase;">Trang Chủ</a></li>
                                             
                             <li>
                                 <form action="UserServlet" method="post">
                                     <input type="hidden" value="logout" name="command">
-                                    <button type="submit" value="logout" class="btn-logout"><b>LOG OUT</b></button>
+                                    <button type="submit" value="logout" class="btn-logout"><b>Đăng Xuất</b></button>
                                 </form>
                             </li>	
                         </ul>

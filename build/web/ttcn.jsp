@@ -12,7 +12,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Thay Đổi Thông Tin Cá Nhân</title>
         <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
         <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
     </head>
@@ -42,7 +42,7 @@
                 </div>    
                 
                 <div class="input-item">
-                    <p class="label">Full Name<span class="text--red">*</span></p>
+                    <p class="label">Họ Và Tên<span class="text--red">*</span></p>
                     <span id="user-result"></span>
                     <input type="text" value="<%=user.getUsername()%>" name="name" id="name" class="custom-size" >
                     <h5 class="text--red"><%= request.getAttribute("error2") != null ? request.getAttribute("error2") : " "%></h5>
@@ -104,7 +104,7 @@
                                     <input type="password" placeholder="Confirm Password" name="copass" id="pass" class="custom-size">
                                     <br><br>-->
             <input type="hidden" value="update" name="command">
-            <input type="submit" class="button-01" value="Update" class="custom-inp">
+            <input type="submit" class="button-01" value="Cập Nhật" class="custom-inp">
         </form>
     </div>
 </body>

@@ -12,7 +12,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <title>JSP Page</title>
+        <title>Trang Chủ</title>
         <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
         <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
         <link href="css/common.css" rel="stylesheet" type="text/css" media="all" />
