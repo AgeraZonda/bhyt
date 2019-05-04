@@ -11,7 +11,15 @@ package model;
  */
 public class Account {
     String cmnd;
-
+    public Account(String cmnd,String password)
+    {
+        this.cmnd=cmnd;
+        this.password = password;
+    }
+    public Account()
+    {
+        
+    }
     public String getCmnd() {
         return cmnd;
     }

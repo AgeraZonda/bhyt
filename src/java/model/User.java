@@ -13,7 +13,41 @@ public class User {
     private long userID;
     private String cmnd, username,avata,avata_name;
     private String  dob="",dantoc="",hotennguoidamho="",gioitinh="",quequan="",bhxh_id="",hogiadinh_id="";
+     public User(long userID, String cmnd, String username, String password, String avata, String avata_name, long admin) {
+        this.userID = userID;
+        this.cmnd = cmnd;
+        this.username = username;
+        this.avata = avata;
+        this.avata_name = avata_name;
+        this.admin = admin;
+    }
+    
+    
 
+    public User(long userID, String cmnd, String username, String password, long admin) {
+        this.userID = userID;
+        this.cmnd = cmnd;
+        this.username = username;
+        this.admin = admin;
+    }
+
+    public User(String username, String dob, String dantoc, String hotennguoidamho, String gioitinh, String quequan, String bhxh_id, String hogiadinh_id,String cmnd) {
+        this.cmnd = cmnd;
+        this.username = username;
+        this.dob = dob;
+        this.dantoc = dantoc;
+        this.hotennguoidamho = hotennguoidamho;
+        this.gioitinh = gioitinh;
+        this.quequan = quequan;
+        this.bhxh_id = bhxh_id;
+        this.hogiadinh_id = hogiadinh_id;
+    }
+
+    
+    public User(String cmnd)
+    {
+        this.cmnd = cmnd;
+    }
     public String getDob() {
         return dob;
     }
@@ -90,23 +124,7 @@ public class User {
     public User() {
     }
 
-    public User(long userID, String cmnd, String username, String password, String avata, String avata_name, long admin) {
-        this.userID = userID;
-        this.cmnd = cmnd;
-        this.username = username;
-        this.avata = avata;
-        this.avata_name = avata_name;
-        this.admin = admin;
-    }
-    
-    
 
-    public User(long userID, String cmnd, String username, String password, long admin) {
-        this.userID = userID;
-        this.cmnd = cmnd;
-        this.username = username;
-        this.admin = admin;
-    }
 
     public long getUserID() {
         return userID;
